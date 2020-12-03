@@ -23,36 +23,11 @@ module "appsync" {
   }
 
   datasources = {
-    registry_terraform_io = {
-      type     = "HTTP"
-      endpoint = "https://registry.terraform.io"
+    dynamodb1 = {
+      type       = "AMAZON_DYNAMODB"
+      table_name = "todoist"
+      region     = "eu-west-1"
     }
-  }
-    resolvers = {
-
-    "Post.title" = {
-      data_source      = "registry_terraform_io"
-      request_template = <<EOF
-{
-    "version": "2018-05-29",
-    "method": "GET",
-    "resourcePath": "/",
-    "params":{
-        "headers": $utils.http.copyheaders($ctx.request.headers)
-    }
-}
-EOF
-
-      response_template = <<EOF
-#if($ctx.result.statusCode == 200)
-    $ctx.result.body
-#else
-    $utils.appendError($ctx.result.body, $ctx.result.statusCode)
-#end
-EOF
-    }
-
-
   }
 
 }
