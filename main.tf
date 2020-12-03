@@ -14,7 +14,7 @@ provider "aws" {
 module "appsync" {
   source = "terraform-aws-modules/appsync/aws"
 
-  name = "dev-appsync"
+  name = "todote"
 
   schema = file("schema.graphql")
 
