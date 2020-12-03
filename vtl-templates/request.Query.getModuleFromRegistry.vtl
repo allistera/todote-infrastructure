@@ -1,0 +1,11 @@
+{
+    "method": "GET",
+    ## E.G. if full path is https://api.xxxxxxxxx.com/posts then resourcePath would be /posts **
+    "resourcePath": "/",
+    "params":{
+        "query":$util.toJson($ctx.args),
+        "headers": {
+            "Authorization": "$ctx.request.headers.Authorization"
+        }
+    }
+}
