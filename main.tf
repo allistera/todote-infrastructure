@@ -28,8 +28,17 @@ module "appsync" {
       endpoint = "https://registry.terraform.io"
     }
   }
-  
-  resolvers = {
+    resolvers = {
+    "Mutation.putPost" = {
+      data_source   = "lambda1"
+      direct_lambda = true
+    }
+
+    "Post.id" = {
+      data_source   = "lambda2"
+      direct_lambda = true
+    }
+
     "Post.title" = {
       data_source      = "registry_terraform_io"
       request_template = <<EOF
@@ -42,7 +51,7 @@ module "appsync" {
     }
 }
 EOF
-      
+
       response_template = <<EOF
 #if($ctx.result.statusCode == 200)
     $ctx.result.body
@@ -52,6 +61,7 @@ EOF
 EOF
     }
 
-      }
+
   }
+
 }
