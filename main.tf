@@ -28,4 +28,15 @@ module "appsync" {
       endpoint = "https://registry.terraform.io"
     }
   }
+  
+  resolvers = {
+    "Query.getZip" = {
+      data_source   = "lambda_create_zip"
+      direct_lambda = true
+    }
+
+    "Query.getModuleFromRegistry" = {
+      data_source       = "registry_terraform_io"
+    }
+  }
 }
