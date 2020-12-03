@@ -42,6 +42,16 @@ module "appsync" {
     }
 }
 EOF
+      
+      response_template = <<EOF
+#if($ctx.result.statusCode == 200)
+    $ctx.result.body
+#else
+    $utils.appendError($ctx.result.body, $ctx.result.statusCode)
+#end
+EOF
+    }
+
       }
   }
 }
