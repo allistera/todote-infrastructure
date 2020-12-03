@@ -31,3 +31,23 @@ module "appsync" {
   }
 
 }
+
+  
+resource "aws_dynamodb_table" "basic-dynamodb-table" {
+  name           = "todoist"
+  hash_key       = "Id"
+
+  attribute {
+    name = "Id"
+    type = "I"
+  }
+
+  attribute {
+    name = "title"
+    type = "S"
+  }
+
+  tags = {
+    Name        = "dynamodb-table-1"
+  }
+}
