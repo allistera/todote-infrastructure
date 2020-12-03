@@ -36,6 +36,7 @@ module "appsync" {
 resource "aws_dynamodb_table" "basic-dynamodb-table" {
   name           = "todoist"
   hash_key       = "Id"
+  range_key      = "title"
 
   attribute {
     name = "Id"
