@@ -41,7 +41,7 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
 
   attribute {
     name = "Id"
-    type = "S"
+    type = "N"
   }
 
   attribute {
