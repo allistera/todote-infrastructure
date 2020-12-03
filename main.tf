@@ -29,15 +29,6 @@ module "appsync" {
     }
   }
     resolvers = {
-    "Mutation.putPost" = {
-      data_source   = "lambda1"
-      direct_lambda = true
-    }
-
-    "Post.id" = {
-      data_source   = "lambda2"
-      direct_lambda = true
-    }
 
     "Post.title" = {
       data_source      = "registry_terraform_io"
