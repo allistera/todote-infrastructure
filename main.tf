@@ -37,6 +37,8 @@ module "appsync" {
 
     "Query.getModuleFromRegistry" = {
       data_source       = "registry_terraform_io"
+      request_template  = file("vtl-templates/request.Query.getModuleFromRegistry.vtl")
+      response_template = file("vtl-templates/response.Query.getModuleFromRegistry.vtl")
     }
   }
 }
