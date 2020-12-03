@@ -30,10 +30,18 @@ module "appsync" {
   }
   
   resolvers = {
-    "Query.getModuleFromRegistry" = {
-      data_source       = "registry_terraform_io"
-      request_template  = file("vtl-templates/request.Query.getModuleFromRegistry.vtl")
-      response_template = file("vtl-templates/response.Query.getModuleFromRegistry.vtl")
+    "Post.title" = {
+      data_source      = "registry_terraform_io"
+      request_template = <<EOF
+{
+    "version": "2018-05-29",
+    "method": "GET",
+    "resourcePath": "/",
+    "params":{
+        "headers": $utils.http.copyheaders($ctx.request.headers)
     }
+}
+EOF
+
   }
 }
