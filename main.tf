@@ -30,11 +30,6 @@ module "appsync" {
   }
   
   resolvers = {
-    "Query.getZip" = {
-      data_source   = "lambda_create_zip"
-      direct_lambda = true
-    }
-
     "Query.getModuleFromRegistry" = {
       data_source       = "registry_terraform_io"
       request_template  = file("vtl-templates/request.Query.getModuleFromRegistry.vtl")
