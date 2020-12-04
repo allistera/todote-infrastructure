@@ -25,7 +25,7 @@ module "appsync" {
   datasources = {
     dynamodb1 = {
       type       = "AMAZON_DYNAMODB"
-      table_name = "todoist"
+      table_name = aws_dynamodb_table.todoist.id
       region     = "eu-west-1"
     }
   }
@@ -33,7 +33,7 @@ module "appsync" {
 }
 
   
-resource "aws_dynamodb_table" "basic-dynamodb-table" {
+resource "aws_dynamodb_table" "todoist" {
   name           = "todoist"
   hash_key       = "Id"
   range_key      = "title"
