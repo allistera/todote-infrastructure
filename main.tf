@@ -29,8 +29,18 @@ module "appsync" {
       region     = "eu-west-1"
     }
   }
-
 }
+
+resource "aws_appsync_resolver" "test" {
+  api_id      = "todote"
+  field       = "Post"
+  type        = "Query"
+  data_source = "dynamodb1"
+
+  request_template = file("vtl-templates/request.Query.Post.vtl")
+  response_template = file("vtl-templates/response.Query.Post.vtl")
+}
+
 
   
 resource "aws_dynamodb_table" "todoist" {
