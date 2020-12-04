@@ -44,11 +44,6 @@ resource "aws_dynamodb_table" "todoist" {
     type = "N"
   }
 
-  attribute {
-    name = "title"
-    type = "S"
-  }
-
   tags = {
     Name        = "dynamodb-table-1"
   }
