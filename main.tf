@@ -32,7 +32,7 @@ module "appsync" {
 
   resolvers = {
     "Query.Post" = {
-      data_source       = "registry_terraform_io"
+      data_source       = "dynamodb1"
       request_template  = file("vtl-templates/request.Query.Post.vtl")
       response_template = file("vtl-templates/response.Query.Post.vtl")
     }
