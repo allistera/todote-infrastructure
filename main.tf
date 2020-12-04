@@ -22,9 +22,7 @@ resource "aws_appsync_datasource" "todoist" {
   api_id = aws_appsync_graphql_api.todote.id
   name   = "dynamodb1"
   type   = "AMAZON_DYNAMODB"
-  
-  table_name = aws_dynamodb_table.todoist.id
-  
+    
   dynamodb_config {
     table_name = aws_dynamodb_table.todoist.id
   }
