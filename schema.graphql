@@ -7,7 +7,7 @@ type Mutation {
 type Task {
 	id: ID!
 	title: String!
-	done: Bool!
+	done: Boolean!
 }
 
 type Query {
