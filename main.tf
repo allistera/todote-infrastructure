@@ -14,7 +14,7 @@ provider "aws" {
 module "appsync" {
   source = "terraform-aws-modules/appsync/aws"
 
-  name = "dev-appsync"
+  name = "todote"
 
   schema = file("schema.graphql")
 
@@ -40,8 +40,8 @@ module "appsync" {
 }
 
 
-resource "aws_dynamodb_table" "todoist" {
-  name           = "todoist"
+resource "aws_dynamodb_table" "todote" {
+  name           = "todote"
   hash_key       = "id"
   billing_mode   = "PAY_PER_REQUEST"
 
