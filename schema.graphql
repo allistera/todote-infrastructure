@@ -1,7 +1,7 @@
 type Mutation {
-	createTask(title: String!): Post
-	deleteTask(id: ID!): Post
-	updateTask(id: ID!, title: String): Post
+	createTask(title: String!): Task
+	deleteTask(id: ID!): Task
+	updateTask(id: ID!, title: String): Task
 }
 
 type Task {
