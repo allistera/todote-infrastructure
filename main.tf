@@ -11,35 +11,33 @@ provider "aws" {
   skip_requesting_account_id = false
 }
 
-resource "aws_appsync_graphql_api" "todote" {
-  authentication_type = "API_KEY"
-  name                = "todote"
+module "appsync" {
+  source = "terraform-aws-modules/appsync/aws"
+
+  name = "dev-appsync"
 
   schema = file("schema.graphql")
-}
 
-resource "aws_appsync_datasource" "todoist" {
-  api_id = aws_appsync_graphql_api.todote.id
-  name   = "dynamodb1"
-  type   = "AMAZON_DYNAMODB"
-    
-  dynamodb_config {
-    table_name = aws_dynamodb_table.todoist.id
+  api_keys = {
+    default = null # such key will expire in 7 days
+  }
+
+  datasources = {
+    dynamodb1 = {
+      type       = "AMAZON_DYNAMODB"
+      table_name = aws_appsync_graphql_api.todote.name
+      region     = "eu-west-1"
+    }
+  }
+
+  resolvers = {
+    "Query.Post" = {
+      data_source       = "registry_terraform_io"
+      request_template  = file("vtl-templates/request.Query.Post.vtl")
+      response_template = file("vtl-templates/response.Query.Post.vtl")
+    }
   }
 }
-
-resource "aws_appsync_resolver" "post" {
-  api_id      = "todote"
-  field       = "Post"
-  type        = "Query"
-  data_source = aws_appsync_datasource.todoist.name
-
-  request_template = file("vtl-templates/request.Query.Post.vtl")
-  response_template = file("vtl-templates/response.Query.Post.vtl")
-}
-
-
-
 
 
 resource "aws_dynamodb_table" "todoist" {
