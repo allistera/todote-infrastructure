@@ -49,10 +49,16 @@ module "appsync" {
       response_template = file("vtl-templates/response.Mutation.createPost.vtl")
     }
     
-     "Mutation.deletePost" = {
+    "Mutation.deletePost" = {
       data_source       = "dynamodb1"
       request_template  = file("vtl-templates/request.Mutation.deletePost.vtl")
       response_template = file("vtl-templates/response.Mutation.deletePost.vtl")
+    }
+    
+    "Mutation.updatePost" = {
+      data_source       = "dynamodb1"
+      request_template  = file("vtl-templates/request.Mutation.updatePost.vtl")
+      response_template = file("vtl-templates/response.Mutation.updatePost.vtl")
     }
   }
 }
