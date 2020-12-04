@@ -8,7 +8,9 @@ type Post {
 }
 
 type Query {
-	singlePost(id: ID!): Post
+    	Post(id: ID!): Post
+    	Posts(limit: Int, skip: Int, sort_field: String, sort_order: String): [Post]
+	
 }
 
 schema {
