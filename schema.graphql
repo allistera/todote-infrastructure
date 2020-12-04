@@ -1,17 +1,18 @@
 type Mutation {
-	createPost(title: String!): Post
-	deletePost(id: ID!): Post
-	updatePost(id: ID!, title: String): Post
+	createTask(title: String!): Post
+	deleteTask(id: ID!): Post
+	updateTask(id: ID!, title: String): Post
 }
 
-type Post {
+type Task {
 	id: ID!
 	title: String!
+	done: Bool!
 }
 
 type Query {
-    	Post(id: ID!): Post
-    	Posts(limit: Int): [Post]	
+    Task(id: ID!): Task
+    Tasks(limit: Int): [Task]	
 }
 
 schema {

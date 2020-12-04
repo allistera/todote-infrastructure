@@ -31,34 +31,34 @@ module "appsync" {
   }
 
   resolvers = {
-    "Query.Post" = {
+    "Query.Task" = {
       data_source       = "dynamodb1"
-      request_template  = file("vtl-templates/request.Query.Post.vtl")
-      response_template = file("vtl-templates/response.Query.Post.vtl")
+      request_template  = file("vtl-templates/request.Query.Task.vtl")
+      response_template = file("vtl-templates/response.Query.Task.vtl")
     }
     
-    "Query.Posts" = {
+    "Query.Tasks" = {
       data_source       = "dynamodb1"
-      request_template  = file("vtl-templates/request.Query.Posts.vtl")
-      response_template = file("vtl-templates/response.Query.Posts.vtl")
+      request_template  = file("vtl-templates/request.Query.Tasks.vtl")
+      response_template = file("vtl-templates/response.Query.Tasks.vtl")
     }
     
-    "Mutation.createPost" = {
+    "Mutation.createTask" = {
       data_source       = "dynamodb1"
-      request_template  = file("vtl-templates/request.Mutation.createPost.vtl")
-      response_template = file("vtl-templates/response.Mutation.createPost.vtl")
+      request_template  = file("vtl-templates/request.Mutation.createTask.vtl")
+      response_template = file("vtl-templates/response.Mutation.createTask.vtl")
     }
     
-    "Mutation.deletePost" = {
+    "Mutation.deleteTask" = {
       data_source       = "dynamodb1"
-      request_template  = file("vtl-templates/request.Mutation.deletePost.vtl")
-      response_template = file("vtl-templates/response.Mutation.deletePost.vtl")
+      request_template  = file("vtl-templates/request.Mutation.deleteTask.vtl")
+      response_template = file("vtl-templates/response.Mutation.deleteTask.vtl")
     }
     
-    "Mutation.updatePost" = {
+    "Mutation.updateTask" = {
       data_source       = "dynamodb1"
-      request_template  = file("vtl-templates/request.Mutation.updatePost.vtl")
-      response_template = file("vtl-templates/response.Mutation.updatePost.vtl")
+      request_template  = file("vtl-templates/request.Mutation.updateTask.vtl")
+      response_template = file("vtl-templates/response.Mutation.updateTask.vtl")
     }
   }
 }
