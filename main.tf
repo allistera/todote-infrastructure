@@ -18,7 +18,7 @@ resource "aws_appsync_graphql_api" "todote" {
   schema = file("schema.graphql")
 }
 
-resource "aws_appsync_datasource" "dynamodb1" {
+resource "aws_appsync_datasource" "todoist" {
   api_id = aws_appsync_graphql_api.todote.id
   name   = "dynamodb1"
   type   = "AMAZON_DYNAMODB"
