@@ -25,7 +25,7 @@ module "appsync" {
   datasources = {
     dynamodb1 = {
       type       = "AMAZON_DYNAMODB"
-      table_name = aws_appsync_graphql_api.todote.name
+      table_name = aws_dynamodb_table.todote.id
       region     = "eu-west-1"
     }
   }
