@@ -35,12 +35,12 @@ module "appsync" {
   
 resource "aws_dynamodb_table" "todoist" {
   name           = "todoist"
-  hash_key       = "Id"
+  hash_key       = "id"
   billing_mode   = "PAY_PER_REQUEST"
 
   attribute {
-    name = "Id"
-    type = "N"
+    name = "id"
+    type = "S"
   }
 
   tags = {
