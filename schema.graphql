@@ -1,5 +1,6 @@
 type Mutation {
-	putPost(title: String!): Post
+	createPost(title: String!): Post
+	deletePost(id: ID!): Post
 }
 
 type Post {
@@ -9,8 +10,7 @@ type Post {
 
 type Query {
     	Post(id: ID!): Post
-    	Posts(limit: Int): [Post]
-	
+    	Posts(limit: Int): [Post]	
 }
 
 schema {
