@@ -36,7 +36,6 @@ module "appsync" {
 resource "aws_dynamodb_table" "todoist" {
   name           = "todoist"
   hash_key       = "Id"
-  range_key      = "Id"
   billing_mode   = "PAY_PER_REQUEST"
 
   attribute {
