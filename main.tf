@@ -36,6 +36,12 @@ module "appsync" {
       request_template  = file("vtl-templates/request.Query.Post.vtl")
       response_template = file("vtl-templates/response.Query.Post.vtl")
     }
+    
+    "Query.Posts" = {
+      data_source       = "dynamodb1"
+      request_template  = file("vtl-templates/request.Query.Posts.vtl")
+      response_template = file("vtl-templates/response.Query.Posts.vtl")
+    }
   }
 }
 
