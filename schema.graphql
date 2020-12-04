@@ -9,7 +9,7 @@ type Post {
 
 type Query {
     	Post(id: ID!): Post
-    	Posts(limit: Int, skip: Int, sort_field: String, sort_order: String): [Post]
+    	Posts(limit: Int): [Post]
 	
 }
 
